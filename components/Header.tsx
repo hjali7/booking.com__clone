@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import logo from '@/assets/logo.jpg'
+import logo from '@/public/images/logo.jpg'
 import MobileMenu from "./MobileMenu";
+import PopOver from "./PopOver";
+import { LogIn } from "lucide-react";
 
 export default function Header () {
     return (
@@ -16,6 +18,13 @@ export default function Header () {
 
                 <div className="flex lg:hidden">
                     <MobileMenu />
+                </div>
+                <PopOver />
+                
+                <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                    <Link href="#" className="text-sm font-semibold leading-6 text-white flex gap-x-2 items-center justify-center">
+                        Log in <LogIn aria-hidden="true" />
+                    </Link>
                 </div>
             </nav>
         </header>
