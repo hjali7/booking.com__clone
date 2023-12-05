@@ -2,17 +2,18 @@
 
 import { useState } from "react";
 
-import Link from "next/link";
-
 import { Menu } from "lucide-react";
 import { Button } from "./ui/button";
 
-export default function MobileMenu () {
+type props = {
+    onClick? : ()=> void
+}
 
-    const [MobileMenuOpen , setMobileMenuOpen] = useState(false)
-    
+export default function MobileMenu (
+    {onClick}: props
+) {
     return (
-        <Button className="-m-2.3 inline-flex items-center justify-center rounded-md p-2.5 text-white" onClick={() => setMobileMenuOpen(true)}>
+        <Button className="-m-2.3 inline-flex items-center justify-center rounded-md p-2.5 text-white" onClick={()=> onClick}>
             <span className="sr-only">Open main menu</span>
             <Menu />
         </Button>
