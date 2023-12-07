@@ -5,6 +5,7 @@ import { Popover , Dialog , Disclosure , Transition } from "@headlessui/react";
 import { ChatBubbleLeftIcon , ChevronDownIcon , HomeIcon ,PaperAirplaneIcon , PhoneIcon , PlayCircleIcon } from '@heroicons/react/20/solid';
 import Link from 'next/link';
 import { CallToAction, products } from './share/popItem';
+import { Links } from './share/Links';
 
 export default function PopOver () {
     return (
@@ -43,10 +44,9 @@ export default function PopOver () {
                     </Popover.Panel>
                 </Transition>
             </Popover>
-            <Link href="#" className='text-md font-semibold leading-6 text-white'>Flights</Link>
-            <Link href="#" className='text-md font-semibold leading-6 text-white'>Car Rentals</Link>
-            <Link href="#" className='text-md font-semibold leading-6 text-white'>Attractions</Link>
-            <Link href="#" className='text-md font-semibold leading-6 text-white'>Flight + Hotel</Link>
+                {Links.map(item => (
+                    <Link key={item.name} href={item.href} className="font-semibold text-white">{item.name}</Link>
+                ))}
         </Popover.Group>
     )
 }
