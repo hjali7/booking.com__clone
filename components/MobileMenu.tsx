@@ -5,17 +5,18 @@ import { useState } from "react";
 import { Menu } from "lucide-react";
 import { Button } from "./ui/button";
 
-type props = {
-    onClick? : ()=> void
+interface props {
+    onclick : ()=> void ;
 }
 
 export default function MobileMenu (
-    {onClick}: props
+    {onclick}: props
 ) {
     return (
-        <Button className="-m-2.3 inline-flex items-center justify-center rounded-md p-2.5 text-white" onClick={()=> onClick}>
+        <Button className="-m-2.3 inline-flex items-center justify-center rounded-md p-2.5 text-white" onClick={onclick}>
             <span className="sr-only">Open main menu</span>
             <Menu />
         </Button>
     )
 }
+

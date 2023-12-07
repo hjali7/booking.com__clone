@@ -1,20 +1,24 @@
 'use client'
 
-import * as React from 'react'
+// import * as React from 'react'
 import Image from "next/image";
 import Link from "next/link";
-
+import { useState } from "react";
 import logo from '@/public/images/logo.jpg'
 
 import MobileMenu from "./MobileMenu";
 
 import PopOver from "./PopOver";
 
-import { LogIn } from "lucide-react";
+import { LogIn, Menu } from "lucide-react";
 import { Dialog } from '@headlessui/react';
+import { Button } from "./ui/button";
 
 export default function Header () {
-    const [MobileMenuOpen , setMobileMenuOpen] = React.useState(false)
+    const [MobileMenuOpen , setMobileMenuOpen] = useState(false)
+    const handleMenu = () => {
+        setMobileMenuOpen(!MobileMenuOpen)
+    }
     return (
         <header className="bg-[#013b94]">
             <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">                
@@ -25,7 +29,7 @@ export default function Header () {
                     </Link>
                 </div>
                 <div className="flex lg:hidden">
-                    <MobileMenu onClick={()=>setMobileMenuOpen}/>
+                    <MobileMenu onclick={handleMenu}/>
                 </div>
                 <PopOver />
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -36,7 +40,7 @@ export default function Header () {
             </nav>
             <Dialog as="div" className="lg:hidden" open={MobileMenuOpen} onClose={setMobileMenuOpen}>
                 <div className='fixed inset-0 z-10'/>
-                <Dialog.Panel className="bg-[#013b94] fixed inset-y-0 right-0 z-10 w-full">
+                <Dialog.Panel className="bg-[#013b94] fixed inset-y-0 right-0 z-10 w-full overflow-y-auto px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
 
                 </Dialog.Panel>
             </Dialog>
